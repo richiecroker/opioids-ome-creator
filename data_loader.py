@@ -20,6 +20,7 @@ def load_sql(path: str) -> str:
 # Load your specific query
 ome_sql = load_sql("sql/ome.sql")
 date_sql = load_sql("sql/max_month.sql")
+la_sql = load_sql("sql/la.sql")
 
 # Generic cached query runner
 @st.cache_data
@@ -46,8 +47,10 @@ def get_fresh_data_if_needed():
         st.cache_data.clear()  # Invalidate all cached data
         # Re-run to re-cache everything
         data = run_query(ome_sql)
+        la_data = run_query(la_sql)
         get_cached_max_month()  # Update cached max_month
     else:
         data = run_query(ome_sql)  # Cached version used
+        la_data = run_query(la_sql)
 
     return data
