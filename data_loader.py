@@ -20,6 +20,8 @@ def load_sql(path: str) -> str:
 # Load your specific query
 ome_sql = load_sql("sql/ome.sql")
 date_sql = load_sql("sql/max_month.sql")
+high_dose_la_sql = load_sql("sql/high_dose_la.sql")
+la_sql = load_sql("sql/la.sql")
 
 # Generic cached query runner
 @st.cache_data
